@@ -1,65 +1,82 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="flex min-h-screen items-center justify-center bg-neutral-100">
+      <svg aria-hidden="true" className="absolute" height="0" width="0">
+        <filter id="paper">
+          <feTurbulence
+            baseFrequency="0.7"
+            numOctaves="3"
+            result="noise"
+            stitchTiles="stitch"
+            type="fractalNoise"
+          />
+          <feColorMatrix in="noise" result="grain" type="saturate" values="0" />
+          <feBlend
+            in="grain"
+            in2="SourceGraphic"
+            mode="overlay"
+            result="blended"
+          />
+          <feComposite in="blended" in2="SourceGraphic" operator="in" />
+        </filter>
+      </svg>
+      <div className="relative h-85 w-140">
+        {/* Back wall */}
+        <div className="absolute inset-x-0 h-55 rounded-t-4xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
+        {/*Back wall shine*/}
+        <div className="pointer-events-none absolute inset-x-10 top-3 h-12 rounded-full bg-[#493939]/20 blur-xl" />
+        {/* Front pocket */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-70 rounded-b-4xl bg-[#2C1E18] shadow-[inset_30px_-20px_40px_rgba(0,0,0,0.7),inset_-15px_-5px_40px_rgba(0,0,0,0.7),inset_0_3px_1px_rgba(116,70,54,1),inset_0px_4px_10px_rgba(0,0,0,1)]"
+          style={{ filter: "url(#paper)" }}
+        >
+          <div className="pointer-events-none absolute inset-0 rounded-b-4xl bg-radial-[at_75%_25%] from-[#493939] to-transparent opacity-90" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/*Front Stiching Lines*/}
+        <svg
+          className="pointer-events-none absolute inset-0 z-50 h-full w-full"
+          viewBox="0 0 560 340"
+        >
+          <title>Stiching lines</title>
+          <filter
+            height="140%"
+            id="stitch-shadow"
+            width="140%"
+            x="-20%"
+            y="-20%"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <feDropShadow
+              dx="0"
+              dy="1"
+              floodColor="#0D0806"
+              floodOpacity="0.8"
+              stdDeviation="0.6"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          </filter>
+          <path
+            d="M 15 70 L 15 310 Q 15 325 30 325 L 530 325 Q 545 325 545 310 L 545 70 "
+            fill="none"
+            filter="url(#stitch-shadow)"
+            stroke="#412F2F"
+            strokeDasharray="7 7"
+            strokeLinecap="round"
+            strokeWidth="2"
+          />
+        </svg>
+        {/*Back Stich Line*/}
+        {/*<svg
+          className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full"
+          viewBox="0 0 560 340"
+        >
+          <title>Back Stiching Line</title>
+          <path
+            d="M 15 58 L 15 30 Q 15 15 30 15 L 530 15 Q 545 15 545 30 L 545 58"
+            fill="none"
+            stroke="#0D0806"
+            strokeWidth="2"
+          />
+        </svg>*/}
+      </div>
+    </main>
   );
 }
