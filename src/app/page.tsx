@@ -25,6 +25,7 @@ export default function Home() {
         <div className="absolute inset-x-0 h-55 rounded-t-4xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
         {/*Back wall shine*/}
         <div className="pointer-events-none absolute inset-x-10 top-3 h-12 rounded-full bg-[#493939]/20 blur-xl" />
+        <div className="pointer-events-none absolute inset-x-6 bg-orange-100 rounded-3xl top-6 bottom-0 h-50 w-128"/>
         {/* Front pocket */}
         <div
           className="absolute inset-x-0 bottom-0 h-70 rounded-b-4xl bg-[#2C1E18] shadow-[inset_30px_-20px_40px_rgba(0,0,0,0.7),inset_-15px_-5px_40px_rgba(0,0,0,0.7),inset_0_3px_1px_rgba(116,70,54,1),inset_0px_4px_10px_rgba(0,0,0,1)]"
@@ -63,20 +64,8 @@ export default function Home() {
             strokeWidth="2"
           />
         </svg>
-        {/*Back Stich Line*/}
-        {/*<svg
-          className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full"
-          viewBox="0 0 560 340"
-        >
-          <title>Back Stiching Line</title>
-          <path
-            d="M 15 58 L 15 30 Q 15 15 30 15 L 530 15 Q 545 15 545 30 L 545 58"
-            fill="none"
-            stroke="#0D0806"
-            strokeWidth="2"
-          />
-        </svg>*/}
       </div>
+
     </main>
   );
 }
