@@ -20,19 +20,19 @@ export default function Home() {
           <feComposite in="blended" in2="SourceGraphic" operator="in" />
         </filter>
       </svg>
-      <div className="relative h-85 w-140">
+      <div className="relative h-85 w-140 drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]">
         {/* Back wall */}
-        <div className="absolute inset-x-0 h-55 rounded-t-4xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
+        <div className="absolute inset-x-0 h-55 rounded-t-3xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
         {/*Back wall shine*/}
         <div className="pointer-events-none absolute inset-x-10 top-3 h-12 rounded-full bg-[#493939]/20 blur-xl" />
         {/*Card*/}
-        <div className="pointer-events-none absolute inset-x-6 top-6 bottom-0 h-72 w-128 rounded-t-3xl border-white border-t bg-orange-100 shadow-[0_-4px_20px_rgba(0,0,0,1),inset_0_-240px_40px_rgba(0,0,0,0.5)]" />
+        <div className="pointer-events-none absolute inset-x-6 top-6 bottom-0 h-72 w-128 rounded-t-xl border-white border-t bg-orange-100 shadow-[0_-4px_20px_rgba(0,0,0,1),inset_0_-240px_40px_rgba(0,0,0,0.5)]" />
         {/* Front pocket */}
         <div
-          className="absolute inset-x-0 bottom-0 h-70 rounded-b-4xl bg-[#2C1E18] shadow-[inset_30px_-20px_40px_rgba(0,0,0,0.7),inset_-15px_-5px_40px_rgba(0,0,0,0.7),inset_0_3px_1px_rgba(116,70,54,1),inset_0px_4px_10px_rgba(0,0,0,1)]"
+          className="absolute inset-x-0 bottom-0 h-70 rounded-b-3xl bg-[#2C1E18] shadow-[inset_30px_-20px_40px_rgba(0,0,0,0.7),inset_-15px_-5px_40px_rgba(0,0,0,0.7),inset_0_3px_1px_rgba(116,70,54,1),inset_0px_4px_10px_rgba(0,0,0,1)]"
           style={{ filter: "url(#paper)" }}
         >
-          <div className="pointer-events-none absolute inset-0 rounded-b-4xl bg-radial-[at_75%_25%] from-[#493939] to-transparent opacity-90" />
+          <div className="pointer-events-none absolute inset-0 rounded-b-3xl bg-radial-[at_75%_25%] from-[#493939] to-transparent opacity-90" />
         </div>
         {/*Front Stiching Lines*/}
         <svg
