@@ -1,4 +1,15 @@
+"use client";
+
+import { motion as m } from "motion/react";
+import { useEffect, useState } from "react";
+
 export default function Home() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    console.log(open);
+  }, [open]);
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-neutral-100">
       <svg
@@ -28,13 +39,30 @@ export default function Home() {
           <feComposite in="blended" in2="SourceGraphic" operator="in" />
         </filter>
       </svg>
-      <div className="pointer-events-none relative h-85 w-140 drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]">
+      <div
+        className="relative h-85 w-140 drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]"
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+      >
         {/* Back wall */}
         <div className="absolute inset-x-0 h-55 rounded-t-3xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
         {/* Back wall shine */}
         <div className="absolute inset-x-10 top-3 h-12 rounded-full bg-[#493939]/20 blur-xl" />
         {/* Card */}
-        <div className="absolute inset-x-6 top-6 h-72 w-128 rounded-t-xl border-white border-t bg-orange-100 shadow-[0_-4px_20px_rgba(0,0,0,1),inset_0_-240px_40px_rgba(0,0,0,0.5)]" />
+        <m.div
+          animate={{ y: open ? -40 : 0 }}
+          className="absolute inset-x-6 top-6 h-72 w-lg rounded-xl bg-black p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_0_0.5px_2px_rgba(255,255,255,0.5)]"
+          initial={false}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
+          }}
+        >
+          <div className="flex h-full items-end">
+            <h1 className="font-bold text-4xl">RAJDEEP</h1>
+          </div>
+        </m.div>
         {/* Front pocket */}
         <div
           className="absolute inset-x-0 bottom-0 h-70 rounded-b-3xl bg-[#2C1E18] shadow-[inset_30px_-20px_40px_rgba(0,0,0,0.7),inset_-15px_-5px_40px_rgba(0,0,0,0.7),inset_0_3px_1px_rgba(116,70,54,1),inset_0px_4px_10px_rgba(0,0,0,1)]"
