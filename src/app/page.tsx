@@ -51,7 +51,7 @@ export default function Home() {
         {/* Card */}
         <m.div
           animate={{ y: open ? -40 : 0 }}
-          className="absolute inset-x-6 top-6 h-72 w-lg rounded-xl bg-black p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_0_0.5px_2px_rgba(255,255,255,0.5)]"
+          className="absolute inset-x-6 top-6 h-72 w-lg rounded-xl bg-black p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_-0.5px_0.5px_2px_rgba(255,255,255,0.3)]"
           initial={false}
           transition={{
             type: "spring",
