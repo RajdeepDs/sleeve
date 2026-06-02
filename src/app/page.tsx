@@ -45,13 +45,13 @@ export default function Home() {
         onMouseLeave={() => setOpen(false)}
       >
         {/* Back wall */}
-        <div className="absolute inset-x-0 h-55 rounded-t-3xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
+        <div className="absolute inset-x-0 bottom-28 h-52 rounded-t-3xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
         {/* Back wall shine */}
         <div className="absolute inset-x-10 top-3 h-12 rounded-full bg-[#493939]/20 blur-xl" />
         {/* Card */}
         <m.div
           animate={{ y: open ? -40 : 0 }}
-          className="absolute inset-x-6 top-6 h-72 w-lg rounded-xl bg-black p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_-0.5px_0.5px_2px_rgba(255,255,255,0.3)]"
+          className="absolute inset-x-6 top-10 h-72 w-lg rounded-xl bg-[#f5f0e4] p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_-0.5px_0.5px_2px_rgba(255,255,255,0.3)]"
           initial={false}
           transition={{
             type: "spring",
@@ -59,6 +59,35 @@ export default function Home() {
             damping: 30,
           }}
         >
+          {" "}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              backgroundImage: `
+                     radial-gradient(
+                       circle,
+                       rgba(199,192,176,0.9) 1px,
+                       transparent 1px
+                     )
+                   `,
+              backgroundSize: "14px 14px",
+
+              maskImage: `
+                radial-gradient(
+                  ellipse at 25% 35%,
+                  black 0%,
+                  black 25%,
+                  transparent 60%
+                ),
+                radial-gradient(
+                  ellipse at 95% 50%,
+                  black 0%,
+                  black 20%,
+                  transparent 50%
+                )
+              `,
+            }}
+          />
           <div className="flex h-full items-end">
             <h1 className="font-bold text-4xl">RAJDEEP</h1>
           </div>
