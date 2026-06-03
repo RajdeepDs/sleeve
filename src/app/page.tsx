@@ -38,6 +38,30 @@ export default function Home() {
           />
           <feComposite in="blended" in2="SourceGraphic" operator="in" />
         </filter>
+        <filter id="paper-grain">
+          <feTurbulence
+            baseFrequency="0.65"
+            numOctaves="4"
+            result="noise"
+            stitchTiles="stitch"
+            type="fractalNoise"
+          />
+          <feColorMatrix in="noise" result="grain" type="saturate" values="0" />
+          {/* This is the key — push the noise contrast */}
+          <feComponentTransfer in="grain" result="boosted">
+            <feFuncR intercept="-0.1" slope="1.2" type="linear" />
+            <feFuncG intercept="-0.1" slope="1.2" type="linear" />
+            <feFuncB intercept="-0.1" slope="1.2" type="linear" />
+          </feComponentTransfer>
+          <feBlend
+            in="boosted"
+            in2="SourceGraphic"
+            mode="overlay"
+            result="blended"
+          />
+
+          <feComposite in="blended" in2="SourceGraphic" operator="in" />
+        </filter>
       </svg>
       <div
         className="relative h-85 w-140 drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]"
@@ -51,45 +75,46 @@ export default function Home() {
         {/* Card */}
         <m.div
           animate={{ y: open ? -40 : 0 }}
-          className="absolute inset-x-6 top-10 h-72 w-lg rounded-xl bg-[#f5f0e4] p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_-0.5px_0.5px_2px_rgba(255,255,255,0.3)]"
+          className="absolute inset-x-6 top-10 h-72 w-lg rounded-xl bg-[#f5f0e4] shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_-0.5px_0.5px_2px_rgba(255,255,255,0.3)]"
           initial={false}
+          style={{ filter: "url(#paper-grain)" }}
           transition={{
             type: "spring",
             stiffness: 300,
             damping: 30,
           }}
         >
-          {" "}
+          {/* Laid lines */}
           <div
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 rounded-xl opacity-[0.07]"
             style={{
-              backgroundImage: `
-                     radial-gradient(
-                       circle,
-                       rgba(199,192,176,0.9) 1px,
-                       transparent 1px
-                     )
-                   `,
-              backgroundSize: "14px 14px",
-
-              maskImage: `
-                radial-gradient(
-                  ellipse at 25% 35%,
-                  black 0%,
-                  black 25%,
-                  transparent 60%
-                ),
-                radial-gradient(
-                  ellipse at 95% 50%,
-                  black 0%,
-                  black 20%,
-                  transparent 50%
-                )
-              `,
+              backgroundImage: `repeating-linear-gradient(
+              0deg,
+                    #c0b49a,
+                    #c0b49a 1px,
+                    transparent 1px,
+                    transparent 4px
+              )`,
             }}
           />
-          <div className="flex h-full items-end">
-            <h1 className="font-bold text-4xl">RAJDEEP</h1>
+
+          {/* Name */}
+          <div className="relative flex h-full items-end overflow-clip">
+            <div
+              className="absolute -bottom-20 left-14 flex -rotate-90 flex-col font-extrabold leading-[0.85] tracking-tight"
+              style={{
+                color: "#3a3530",
+                textShadow: `
+                  0 -0.5px 0 rgba(255,245,230,0.5),
+                  0 0.5px 1px rgba(0,0,0,0.15)
+                `,
+              }}
+            >
+              <span className="text-8xl">Nice</span>
+              <span className="text-8xl">to</span>
+              <span className="text-8xl">Meet</span>
+              <span className="text-8xl">You</span>
+            </div>
           </div>
         </m.div>
         {/* Front pocket */}
