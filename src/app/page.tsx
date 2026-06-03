@@ -63,10 +63,19 @@ export default function Home() {
           <feComposite in="blended" in2="SourceGraphic" operator="in" />
         </filter>
       </svg>
-      <div
+      <m.div
+        animate={{
+          y: open ? 2 : 0,
+          scale: open ? 0.998 : 1,
+        }}
         className="relative h-85 w-140 drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]"
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
       >
         {/* Back wall */}
         <div className="absolute inset-x-0 bottom-28 h-52 rounded-t-3xl bg-[#1A1411] shadow-[inset_0_-160px_40px_rgba(0,0,0,0.5)]" />
@@ -74,15 +83,30 @@ export default function Home() {
         <div className="absolute inset-x-10 top-3 h-12 rounded-full bg-[#493939]/20 blur-xl" />
         {/* Card */}
         <m.div
-          animate={{ y: open ? -40 : 0 }}
+          animate={{
+            y: open ? -50 : 0,
+            rotate: open ? -0.8 : 0,
+            scale: open ? 1.01 : 1,
+          }}
           className="absolute inset-x-6 top-10 h-72 w-lg rounded-xl bg-[#f5f0e4] shadow-[0_-4px_20px_rgba(0,0,0,0.1),inset_-0.5px_0.5px_2px_rgba(255,255,255,0.3)]"
           initial={false}
           style={{ filter: "url(#paper-grain)" }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
-          }}
+          transition={
+            open
+              ? {
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 24,
+                  mass: 1.2,
+                  // mass adds weight — the card feels like it has substance
+                }
+              : {
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 28,
+                  mass: 0.8,
+                }
+          }
         >
           {/* Laid lines */}
           <div
@@ -155,7 +179,7 @@ export default function Home() {
             strokeWidth="2"
           />
         </svg>
-      </div>
+      </m.div>
     </main>
   );
 }
